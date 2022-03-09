@@ -81,15 +81,13 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal;
 };
-loadProducts();
-
+let datas = loadProducts()
 
 // search products 
 let searchProducts = () => {
   let inputField = document.getElementById('input-field')
   let inputFieldValue = inputField.value.toLocaleLowerCase()
 
-  let datas = loadProducts()
   let searchResult = datas.filter(data => data.title.toLocaleLowerCase().includes(inputFieldValue))
   if (searchResult.length === 0) {
     allProductsContainer.innerHTML = '<h1 class="text-danger errorMessage">No data found</h1>'
@@ -100,10 +98,10 @@ let searchProducts = () => {
   inputField.value = ''
 }
 
+// products details
 let detailsProductsDiv = document.querySelector('.detailsProducts')
 let productsDetails = id => {
   detailsProductsDiv.textContent = ''
-  let datas = loadProducts()
   let productDetail = datas.filter(data => data.id === id)
 
   let detailDiv = document.createElement('div')
